@@ -1,6 +1,7 @@
 form\IValidatorImpl.class
 form\ObjectsFactory.class
 form\ValidatorExecutor.class
+form\config\MvcConfiguration.class
 form\Field.class
 form\Application.class
 form\DataBase.class

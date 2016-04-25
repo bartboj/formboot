@@ -18,7 +18,7 @@ public class FormGeneratorController {
     public String show(ModelMap map) {
         map.put("form", database.getForm(1));
 
-        return "show";
+        return "/show";
     }
 
 }
