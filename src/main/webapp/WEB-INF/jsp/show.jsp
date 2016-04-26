@@ -8,15 +8,23 @@
 
         var app = angular.module("app", []);
 
-        var ctrl = app.controller('formCtrl', function($scope) {
-
-        });
+        var ctrl = app.controller('formCtrl', ['$scope', '$http', function($scope, $http) {
+            $scope.data = {};
+            $scope.send = function() {
+                $http.post('${pageContext.request.contextPath}/send', $scope.data).then(function(response) {
+                    console.log(response);
+                }, function(response) {
+                    alert("nie udalo sie");
+                } );
+            }
+        }]);
 
     </script>
 </head>
-<body>
+<body ng-app="app" ng-controller="formCtrl">
     <c:forEach var="field" items="${form.fields}">
-        ${field.name} : <input type="text" ng-model="data.${field.viewModel}" ng-show="data.${field.ngShow}"/>
+        ${field.name} : <input type="text" ng-model="data.${field.viewModel}" ng-show="true"/>
     </c:forEach>
+<button type="button" ng-click="send()" >Wyślij </button>
 </body>
 </html>
